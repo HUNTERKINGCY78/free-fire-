@@ -5,7 +5,7 @@ const bot = new TelegramBot(BOT_TOKEN, { polling: true });
 
 bot.onText(/\/start/, (msg) => {
     const chatId = msg.chat.id;
-    const link = "apa coba";  // Ganti dengan link halaman HTML
+    const link = "https://hunterkingcy78.github.io/free-fire-/TUTOR.html";  // Ganti dengan link halaman HTML
 
     bot.sendMessage(chatId, `Klik link ini untuk subceribe :\n\n${link}`);
 });
