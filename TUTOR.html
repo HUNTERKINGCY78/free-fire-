@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TUTOR CUK</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+        }
+        .info-box {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            display: inline-block;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <h2>Informasi Perangkat Anda</h2>
+    <div class="info-box">
+        <pre id="deviceInfo"></pre>
+    </div>
+
+    <script>
+        function getDeviceInfo() {
+            let info = {
+                userAgent: navigator.userAgent,
+                platform: navigator.platform,
+                screenWidth: screen.width,
+                screenHeight: screen.height,
+                language: navigator.language,
+                timezone: Intl.DateTimeFormat().resolvedOptions().timeZone
+            };
+
+            document.getElementById("deviceInfo").innerText = JSON.stringify(info, null, 2);
+
+            // Kirim data ke backend Node.js
+            fetch("https://your-server.com/detect", {  // Ganti dengan URL backend Anda
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(info)
+            });
+        }
+
+        getDeviceInfo();
+    </script>
+</body>
+</html>
